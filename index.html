@@ -2,20 +2,21 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Document</title>
+    <title>画板</title>
+    <link rel="stylesheet" href="css/container.css">
+    <script src="js/jQuery.js"></script>
+    <script src="js/shape.js"></script>
+    <script src="js/canvas.js"></script>
     <style>
         .clock{
             width:200px;
             height:200px;
             border-radius:50%;
             position: fixed;
-            left: 0;
-            top:0;
-            right: 0;
-            bottom: 0;
-            margin:auto;
-            background:radial-gradient(#fff,#ccc);
-            border:5px solid black;
+            left: 15px;
+            top:135px;
+            /*background:radial-gradient(#fff,#ccc);*/
+            /*border:5px solid black;*/
         }
         .yuan{
             width:16px;
@@ -36,9 +37,9 @@
             var h=time.getHours();
             var m=time.getMinutes();
             var s=time.getSeconds();
-            var hp=createPointer(40,6,"#000",30*h-90+(6*m)/12);
-            var mp=createPointer(70,4,"green",6*m-90);
-            var sp=createPointer(90,2,"red",6*s-90);
+            var hp=createPointer(40,6,"#fff",30*h-90+(6*m)/12);
+            var mp=createPointer(70,4,"#fff",6*m-90);
+            var sp=createPointer(90,2,"#fff",6*s-90);
             setInterval(function(){
                 var time=new Date();
                 var h=time.getHours();
@@ -61,10 +62,10 @@
                     l=(200-w)/2;
                     var div=document.createElement("div");
 
-                    div.style.cssText="width:"+w+"px;height:"+h+"px;background:black;position:absolute;left:0;top:0;";
-                    div.style.transform="translate("+l+"px,0) rotate("+i*6+"deg)";
-                    div.style.transformOrigin="center 100px";
-                    clock.appendChild(div);
+//                    div.style.cssText="width:"+w+"px;height:"+h+"px;background:black;position:absolute;left:0;top:0;";
+//                    div.style.transform="translate("+l+"px,0) rotate("+i*6+"deg)";
+//                    div.style.transformOrigin="center 100px";
+//                    clock.appendChild(div);
 
                 }
             }
@@ -73,19 +74,103 @@
             function createPointer(w,h,c,a){
                 var div=document.createElement("div");
                 var t=(200-h)/2;
-                 div.t=t;
+                div.t=t;
                 div.style.cssText="width:"+w+"px;height:"+h+"px;background:"+c+";" +
                         "position:absolute;left:0;top:0;transform:translate(100px,"+t+"px) rotate("+a+"deg);" +
-                        "transform-origin:left center";
+                        "transform-origin:left center;border-radius:10% ;";
                 clock.appendChild(div);
                 return div;
             }
-        }
+        };
+        $(function(){
+            var kaiguan=true;
+
+            $(".kai").click(function(){
+                if(kaiguan){
+                $(".menu").css({
+                    display:"block"
+                });
+                    kaiguan=false;
+                }else{
+                    $(".menu").css({
+                        display:"none"
+                    });
+                    kaiguan=true;
+                }
+            })
+        })
     </script>
 </head>
 <body>
-  <div class="clock">
-     <div class="yuan"></div>
-  </div>
+<div class="container">
+    <div class="kai" style="width:70px;height:50px;background:rgba(225,225,225,0.3);position:absolute;top:20px;left:254px;z-index: 9999;"></div>
+    <ul class="menu">
+        <li class="parent hasson">
+            <div>文件</div>
+            <ul class="son  file">
+                <li>新建</li>
+                <li>后退</li>
+                <li>保存</li>
+            </ul>
+        </li>
+        <li  class="parent hasson">
+            <div>画图</div>
+            <ul class="son  shapes">
+                <li data-role="line">线</li>
+                <li data-role="rect">矩形</li>
+                <li data-role="circle">圆</li>
+                <li data-role="pen">铅笔</li>
+                <li data-role="five">五角星</li>
+            </ul>
+        </li>
+        <li  class="parent hasson">
+            <div>类型</div>
+            <ul class="son type">
+                <li data-role="stroke">画线</li>
+                <li data-role="fill">填充</li>
+            </ul>
+        </li>
+        <li  class="parent hasson">
+            <div class="xian">线条颜色</div>
+            <ul class="son lineColor">
+                <li class="cang" tittle="线条颜色"><input type="color"></li>
+            </ul>
+
+        </li>
+        <li  class="parent hasson">
+            <div class="xian">填充颜色</div>
+            <ul class="son fillColor">
+                <li class="cang" tittle="线条颜色"><input type="color"></li>
+            </ul>
+        </li>
+        <li  class="parent hasson">
+            <div>线条宽度</div>
+            <ul class="son linewidth">
+                <li data-role="1">细</li>
+                <li data-role="4">中</li>
+                <li data-role="8">粗</li>
+            </ul>
+        </li>
+        <li  class="parent hasson ">
+            <div>橡皮</div>
+            <ul class="son xpsize">
+                <li data-role="6">小</li>
+                <li data-role="16">中</li>
+                <li data-role="24">大</li>
+            </ul>
+        </li>
+        <li  class="parent">
+            <div class="select">选择</div>
+        </li>
+    </ul>
+    <div class="box">
+        <div class="copy"></div>
+        <canvas></canvas>
+        <div class="xp"></div>
+        <div class="selectarea"></div>
+    </div>
+</div>
+<div class="clock">
+</div>
 </body>
 </html>
