@@ -1,0 +1,112 @@
+ul,li,body{
+    margin:0;
+    padding:0;
+    list-style:none;
+    font-weight: bolder;
+}
+
+.container{
+    width:100%;
+    height:auto;
+    margin: 0 auto;
+    /*border: 1px solid #666;*/
+}
+.menu{
+
+    width:12.5%;
+    height:44px;
+    text-align: center;
+    line-height: 50px;
+    position: relative;
+    top:10px;
+    left:1180px;
+    z-index: 2;
+    cursor: pointer;
+    /*background:#FFE4F4;*/
+    display: none;
+
+}
+.menu .parent{
+
+    /*box-shadow: 0 0 10px #ccc;*/
+    /*border-radius: 40%;*/
+    position:relative;
+    width:100%;
+    height:100%;
+    /*float: left;*/
+
+    background-size: cover;
+
+}
+.menu .parent:hover{
+    background:url("../images/wowo.png") no-repeat ;
+    background-size: contain;
+
+
+}
+.menu .parent div{
+    box-shadow: 0 0 10px #ccc;
+    width:100%;
+    height:100%;
+    border-radius: 10%;
+}
+.menu .parent .son{
+    width:100%;
+
+}
+.box{
+    width:100%;
+    height:550px;
+    position: relative;
+}
+.copy{
+    position:absolute;
+    left:0;
+    top:0;
+    z-index:1;
+    width:100%;
+    height:100%;
+}
+.box canvas{
+
+    position:fixed;
+    left:0;
+    top:0;
+    background:url(../beib.png);
+    /*background-size: 100%;*/
+
+}
+.son{
+    position:absolute;
+    top:0;
+    left:-170px;
+    display: none;
+    background:#aaa;
+    box-shadow: 0 0 10px #ccc;
+    border-radius: 10%;
+
+}
+.son li{
+    background:url(../images/bb.jpg)0px 50px;
+    background-size: cover;
+    transition: all 2s ease;
+    box-shadow: 0 0 10px #ccc;
+    border-radius: 10%;
+
+}
+.son li:hover{
+    background:url(../images/444.jpg)0px 80px;
+    background-size: 100%;
+    color:#000;
+}
+
+.xp{
+    width:10px;height:10px;border:1px solid black;
+    position: absolute; left:0;right:0;display: none;
+}
+.selectarea{
+    border:1px dotted #000;
+    position: absolute;
+    left:0;top:0;
+    display:none;
+}
